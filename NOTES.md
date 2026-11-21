@@ -15,6 +15,8 @@ Planning ran on Opus 5.5. That was the default for plan mode, and I chose to kee
 
 The store change and the route change are separate logical changes, and each can be reviewed and reverted on its own. The NOTES commit comes last because it describes what the review found.
 
+I didn't split the commits any further because the changes I wanted were simple. Each file got one commit, and the validation and the 404 handling stayed together in the route commit.
+
 ## What the review found
 I reviewed the diff and probed the endpoint with edge cases. It confirmed these were already fine:
 - a missing body, non-string fields and whitespace-only names all return 400
