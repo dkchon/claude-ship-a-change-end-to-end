@@ -24,4 +24,6 @@ I reviewed the diff and probed the endpoint with edge cases. It confirmed these 
 - a non-numeric or fractional id returns 404 rather than crashing
 - names and emails are trimmed before they are stored
 
-It found nothing in my change that needed fixing. One thing I left alone: a malformed JSON body gets a 400 with an empty body from Express's default error handler. That already happens on `POST /users`, so it is outside this change.
+My review also caught a simple output problem: returning `undefined` as the answer for a missing user. It made more sense to return "user not found" instead, which is what the final code does.
+
+It found nothing else in my change that needed fixing. One thing I left alone: a malformed JSON body gets a 400 with an empty body from Express's default error handler. That already happens on `POST /users`, so it is outside this change.
